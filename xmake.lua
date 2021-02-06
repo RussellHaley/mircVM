@@ -1,4 +1,4 @@
--- define target
+
 target("cvm")
 
     -- set kind
@@ -7,7 +7,7 @@ target("cvm")
 	add_linkdirs("~/git/mir/build-ninja")
 	add_links("mir")
     -- add files
-    add_files("main.c", "readfile.c")
+    add_files("src/*.c")
 
 --
 -- If you want to known more usage about xmake, please see https://xmake.io
