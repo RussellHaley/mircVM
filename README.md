@@ -6,8 +6,6 @@ The Mercy VM is a prototype "C Virtual Machine" based on the MIR VM and the C To
 
 Prerequisistes: GCC (e.g. build-essential), xmake, git 
 
-NOTE: I have not linked the MIR repository so you must manually download and build MIR.
-
 ```
 mkdir git; cd git
 git clone https://github.com/RussellHaley/mircVM.git
