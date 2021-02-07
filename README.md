@@ -9,14 +9,23 @@ Prerequisistes: GCC (e.g. build-essential), xmake, git
 NOTE: I have not linked the MIR repository so you must manually download and build MIR.
 
 ```
-git clone https://github.com/vnmakarov/mir.git
-cd mir
-make
-
-cd ..
+mkdir git; cd git
 git clone https://github.com/RussellHaley/mircVM.git
 cd mircVM
+git submodule update --init
 xmake b
 ```
 
-More instructions to come...
+Drop into the build directory and run set the run-file script executable:
+
+```
+chmod +x run-test.lua
+
+```
+
+Then run:
+
+```
+#Defaults to the existing sieve.c file
+./run-test.lua <filename>
+```
