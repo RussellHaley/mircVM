@@ -9,7 +9,14 @@ target("cvm")
 	add_linkdirs("~/git/mir/build-ninja")
 	add_deps("mir")
 	add_files("src/*.c")
-	
+
+
+target("run-script")
+	local outdir = "$(buildir)/$(plat)/$(arch)/$(mode)/"
+	add_configfiles("scripts/run-test.lua.in" )
+	set_configdir(outdir)
+	set_configvar("homedir", "$(scriptdir)/")
+
 --
 -- If you want to known more usage about xmake, please see https://xmake.io
 --

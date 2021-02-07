@@ -1,0 +1,23 @@
+#!/bin/env lua
+
+function GetFileName(url)
+  return url:match("^.+/(.+)%..+$")
+end
+
+function GetFileExtension(url)
+  return url:match("^.+(%..+)$")
+end
+
+
+local sf = string.format
+
+local files_dir = "${homedir}/files/C/"
+local infile = files_dir..(arg[1] or "sieve.c")
+
+print('File: '..infile)
+
+local filename = GetFileName(infile)
+
+os.execute(sf("pwd; ./c2m -S -o %s.mir %s; ./cvm %s.mir",  filename, infile, filename))
+
+
