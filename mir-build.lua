@@ -8,8 +8,8 @@ target("mir")
 	local mir_dir="mir/"
 	set_kind("static")
 	add_files(mir_dir.."mir.c", mir_dir.."mir-gen.c", mir_dir.."c2mir/c2mir.c")
-	add_defines("MIR_PARALLEL_GEN")
-	add_links("pthread")
+	--~ add_defines("MIR_PARALLEL_GEN")
+	--~ add_links("pthread")
 	add_includedirs(mir_dir)
 
 target("c2m")

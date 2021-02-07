@@ -39,8 +39,11 @@ int main(int argc, char** argv)
 	else
 	{
 		printf("Need to pass a filename\n");
+		return 1;
 	}
-	free(str);
 	
+	if(str != NULL) free(str);
+
 	printf("That's all folks.\n");
+	return 0;
 }
