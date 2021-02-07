@@ -4,6 +4,7 @@
 
 int interp(char *str)
 {
+	int retval = 0;
 	MIR_module_t m;
 	MIR_item_t func;
 
@@ -12,17 +13,32 @@ int interp(char *str)
 	size_t len = strlen (str);
 	MIR_scan_string (ctx, str);
 	m = DLIST_TAIL (MIR_module_t, *MIR_get_module_list (ctx));
+	if(m == NULL)
+	{
+		printf("Failed to get the module items\n");
+		retval = 2;
+	}
+	else
+	{
+		func = DLIST_TAIL (MIR_item_t, m->items); 
+		if(func == NULL)
+		{
+			printf("WTH?");
+		}
+		else
+		{
+			printf("enum val %d\n", func->item_type);
+		}
+		MIR_load_module (ctx, m);
+		MIR_load_external (ctx, "printf", printf);
+		MIR_link (ctx, MIR_set_interp_interface, NULL);
 
-	MIR_load_module (ctx, m);
-
-	MIR_link (ctx, MIR_set_interp_interface, NULL);
-
-	MIR_val_t val;
-	MIR_interp (ctx, func, &val, 0);
-
+		MIR_val_t val;
+		MIR_interp (ctx, func, &val, 0);
+	}
 	MIR_finish (ctx);
 
-	return 0;
+	return retval;
 }
 
 int main(int argc, char** argv)
