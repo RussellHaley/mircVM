@@ -18,6 +18,8 @@ print('File: '..infile)
 
 local filename = GetFileName(infile)
 
-os.execute(sf("pwd; ./c2m -S -o %s.mir %s; ./cvm %s.mir",  filename, infile, filename))
+local cmd = sf("pwd; ./c2m -S -o %s.mir %s; ./cvm %s.mir",  filename, infile, filename)
+print(cmd)
+os.execute(cmd)
 
 
