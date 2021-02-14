@@ -8,6 +8,11 @@ target("mir")
 	local mir_dir="mir/"
 	set_kind("static")
 	add_files(mir_dir.."mir.c", mir_dir.."mir-gen.c", mir_dir.."c2mir/c2mir.c")
+	if is_arch("arm*") then
+		add_defines("MIR_ARMV7")
+		print("Added Define?")
+	
+	end
 	--~ add_defines("MIR_PARALLEL_GEN")
 	--~ add_links("pthread")
 	add_includedirs(mir_dir)

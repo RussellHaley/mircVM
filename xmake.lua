@@ -3,10 +3,8 @@ set_project("mircVM")
 includes("mir-build.lua")
 
 target("cvm")
-
 	set_kind("binary")
-	add_includedirs("~/git/mir")
-	add_linkdirs("~/git/mir/build-ninja")
+	add_includedirs("mir")
 	add_deps("mir")
 	add_files("src/*.c")
 
