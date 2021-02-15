@@ -22,7 +22,9 @@ target("c2m")
 	add_includedirs(mir_dir)
 	add_files(mir_dir.."c2mir/c2mir-driver.c")
 	add_deps("mir")
-	add_links("dl")
+	if is_plat("linux") then
+		add_links("dl")
+	end
 
 target("b2m")
 	set_kind("binary")

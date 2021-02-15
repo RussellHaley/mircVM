@@ -7,13 +7,15 @@ target("cvm")
 	add_includedirs("mir")
 	add_deps("mir")
 	add_files("src/*.c")
+	del_files("src/cvm-tools.c")
 
 
 target("run-script")
 	local outdir = "$(buildir)/$(plat)/$(arch)/$(mode)/"
 	add_configfiles("scripts/run-test.lua.in" )
 	set_configdir(outdir)
-	set_configvar("homedir", "$(scriptdir)/")
+	local homedir = os.scriptdir():gsub("\\","/")
+	set_configvar("homedir", homedir)
 
 --
 -- If you want to known more usage about xmake, please see https://xmake.io
